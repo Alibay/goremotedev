@@ -1,0 +1,40 @@
+{
+  "name": "goremotedev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./dist/app.js",
+    "debug": "export NODE_CONFIG_ENV=development || set NODE_CONFIG_ENV=development && node --inspect --max-old-space-size=8192 ./bin/www -n 'bse-api' | pino-pretty -t SYS:standard",
+    "test": "npm run unit",
+    "integ": "NODE_CONFIG_ENV=test TS_NODE_FILES=true mocha -r ts-node/register -r source-map-support/register 'src/test/integ/**/*.test.ts' --exit",
+    "unit": "NODE_CONFIG_ENV=test TS_NODE_FILES=true mocha -r ts-node/register -r source-map-support/register 'src/test/unit/**/*.test.ts' --exit",
+    "prewatch": "rm -rf dist",
+    "watch": "tsc --watch",
+    "prebuild": "rm -rf dist",
+    "build": "tsc",
+    "lint": "tslint --project . --fix",
+    "gulp": "gulp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/config": "0.0.36",
+    "@types/express": "^4.17.6",
+    "@types/express-ejs-layouts": "^2.3.2",
+    "@types/pino": "^6.0.1",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "knex": "^0.21.1",
+    "objection": "^2.1.5",
+    "pg": "^8.2.1",
+    "pino": "^6.3.1",
+    "pino-pretty": "^4.0.0"
+  }
+}
