@@ -5,8 +5,8 @@ module.exports = {
 
   database: {
     host: 'localhost',
-    username: 'ibraimdev',
-    password: '0000',
+    username: 'goremotedevuser',
+    password: 'secret',
     name: 'goremotedev',
   },
 };

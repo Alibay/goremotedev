@@ -20,11 +20,11 @@ export default class JobController {
     res.render('job/details', { job });
   }
 
-  public async archiveJob(req: Request, res: Response, next: NextFunction) {
+  public async archiveJob(_req: Request, _res: Response, _next: NextFunction) {
 
   }
 
-  public async applyJob(req: Request, res: Response, next: NextFunction) {
+  public async applyJob(_req: Request, _res: Response, _next: NextFunction) {
 
   }
 }
