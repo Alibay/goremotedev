@@ -20,5 +20,5 @@ process.on('uncaughtException', (err) => {
 })
 
 app.listen(port, () => {
-  logger.info('Server started on localhost:{}', port);
+  logger.info(config, `Server's runnig on localhost:${port}`);
 });
