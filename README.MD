@@ -26,9 +26,8 @@ sqitch init goremotedev ( already done )
 ### postgres credentials file
 ~~~
 password is in ~/.pgpass
-~~~
-
 localhost:5432:goremotedev:goremotedevuser:secret
+~~~
 
 ### create a migration
 ~~~
