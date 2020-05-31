@@ -1,9 +1,16 @@
 import { Request, Response } from 'express';
 import UserRepository from '../repositories/user.repository';
+import { getLogger } from '../factories/logger';
+import UserService from '../services/user.service';
+
+const logger = getLogger('UserController');
 
 export default class UserController {
 
-  private readonly userRepository = new UserRepository();
+  public constructor(
+    private readonly userRepository: UserRepository,
+    private readonly userService: UserService,
+  ) {}
 
   public async getUsers(_req: Request, res: Response) {
     const users = await this.userRepository.getAll();
@@ -14,6 +21,7 @@ export default class UserController {
     const { code } = req.params;
     const user = await this.userRepository.getByVerificationCode(code);
     if (!user) {
+      logger.warn({}, 'user verification failed');
       res.redirect('/');
     }
 
@@ -24,7 +32,21 @@ export default class UserController {
     res.render('user/register');
   }
 
-  public async register() {}
+  public async register(req: Request, res: Response) {
+    logger.trace(req.body, 'User registeration');
+    // TODO: validate
+    const user = await this.userRepository.getByEmail(req.body.email);
+    if (user) {
+      logger.warn(req.body, 'user is already exists');
+      return res.render('user/register', {
+        error: 'user is already exists'
+      });
+    }
+
+    await this.userService.register(req.body);
+
+    res.redirect('/');
+  }
 
   public loginView(_req: Request, res: Response) {
     res.render('user/login');

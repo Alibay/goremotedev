@@ -38,5 +38,5 @@ sqitch add {migration_file_name} -n '{migration description}'
 ### run migrations
 ~~~
 cd database
-sqitch deploy --verify db:pg:goremotedev -h localhost -d goremotedev -u goremotedevuser
+sqitch deploy --verify db:pg://goremotedevuser:secret@localhost/goremotedev
 ~~~

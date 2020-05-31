@@ -4,7 +4,7 @@ import NotFoundError from '../error/not-found.error';
 
 export default class JobController {
 
-  private readonly jobRepository = new JobRepository();
+  public constructor(private readonly jobRepository: JobRepository) {}
 
   public async getJobs(_req: Request, res: Response) {
     res.render('job/list');

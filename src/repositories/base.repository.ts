@@ -26,6 +26,11 @@ class BaseRepository<T = any> {
     return this.queryWithTx(this.tableName).insert(fields);
   }
 
+  public async saveAndGet(fields: Partial<T>): Promise<T> {
+    const rows = await this.add(fields).returning('*');
+    return rows[0];
+  }
+
   public async upsert(fields: Partial<T> | Array<Partial<T>>) {
     const insertSql = this.add(fields).toSQL();
     const sql = `${insertSql.sql} on conflict do nothing`;

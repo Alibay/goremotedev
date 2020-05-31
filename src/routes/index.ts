@@ -1,13 +1,11 @@
 import { Router } from 'express';
-import HomeController from '../controllers/home.controller.';
-import UserController from '../controllers/user.controller';
-import JobController from '../controllers/job.controller';
+import {
+  jobController,
+  homeController,
+  userController,
+} from '../factories/context';
 
 const _ = Router();
-
-const homeController = new HomeController();
-const userController = new UserController();
-const jobController = new JobController();
 
 _.get('/', homeController.homepage.bind(homeController));
 

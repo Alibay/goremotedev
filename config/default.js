@@ -1,12 +1,18 @@
 module.exports = {
   name: 'GoRemoteDev',
-  logLevel: 'debug',
+  logLevel: 'trace',
   port: 3333,
 
   database: {
     host: 'localhost',
-    username: 'goremotedevuser',
+    port: 5432,
+    user: 'goremotedevuser',
     password: 'secret',
-    name: 'goremotedev',
+    database: 'goremotedev',
+  },
+
+  mail: {
+    provider: 'mailgun',
+    from: 'noreply@goremotedev.com',
   },
 };
