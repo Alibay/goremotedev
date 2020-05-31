@@ -28,10 +28,6 @@ export default class UserController {
     res.redirect('/');
   }
 
-  public async registerView(_req: Request, res: Response) {
-    res.render('user/register');
-  }
-
   public async register(req: Request, res: Response) {
     logger.trace(req.body, 'User registeration');
     // TODO: validate

@@ -65,6 +65,25 @@ export interface ICompany {
   name: string;
 }
 
+export interface IFeedback {
+  id?: number;
+  email: string;
+  userId?: number;
+  reasonId: number;
+  body: string;
+  createdAt?: Date;
+  status?: number;
+  processedAt?: number;
+  processedBy?: number;
+  response?: string;
+}
+
+export interface IManagedFeedbackDto {
+  reasonId: number;
+  email: string;
+  body: string;
+}
+
 export interface IPasswordEncoder {
   encode(plain: string): Promise<string>;
   verify(plain: string, encoded: string): Promise<boolean>;

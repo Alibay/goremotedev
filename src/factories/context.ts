@@ -8,6 +8,7 @@ import MailgunMailProvider from '../utils/mailgun-mail-provider';
 import BcryptPasswordEncoder from '../utils/security/bcryt-password-encoder';
 import JobRepository from '../repositories/job.repository';
 import UserMapper from '../mappers/user.mapper';
+import FeedbackController from '../controllers/feedback.controller';
 
 // repositories
 export const jobRepository = new JobRepository();
@@ -33,3 +34,4 @@ export const userService = new UserService(
 export const userController = new UserController(userRepository, userService);
 export const jobController = new JobController(jobRepository);
 export const homeController = new HomeController();
+export const feedbackController = new FeedbackController();
