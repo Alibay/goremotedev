@@ -18,12 +18,24 @@ export default class UserController {
   }
 
   public async verifyUser(req: Request, res: Response) {
-    const { code } = req.params;
-    const user = await this.userRepository.getByVerificationCode(code);
+    const id = +(req.query.id as string);
+    const code = req.query.code as string;
+
+    const user = await this.userRepository.get(id);
     if (!user) {
-      logger.warn({}, 'user verification failed');
-      res.redirect('/');
+      logger.warn({ id, code }, 'user verification failed: user not found');
+      return res.redirect('/');
     }
+
+    if (user.verificationCode != code) {
+      logger.warn({ id, code }, 'user verification failed: codes not match');
+      return res.redirect('/');
+    }
+
+    user.verificationCode = null;
+    user.verifiedAt = new Date();
+    user.verified = true;
+    await this.userRepository.updateBy(user, { id });
 
     res.redirect('/');
   }

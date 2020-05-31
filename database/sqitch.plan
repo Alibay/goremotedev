@@ -2,3 +2,4 @@
 %project=goremotedev
 
 initdb 2020-05-30T14:32:54Z OEM Configuration (temporary user),,, <oem@ibraim> # initialize db
+users_rename_field_verified 2020-05-31T17:55:39Z OEM Configuration (temporary user),,, <oem@ibraim> # users, rename verified field

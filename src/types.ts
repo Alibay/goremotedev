@@ -4,10 +4,14 @@ export interface IUser {
   firstName: string;
   lastName: string;
   password: string;
-  verificationCode?: string;
+  verificationCode: string | null;
   registeredAt?: Date;
   verifiedAt?: Date;
   lastLoginAt?: Date;
+  status: number;
+  verified: boolean;
+  blocked: boolean;
+  deleted: boolean;
 }
 
 export interface IManagedUserDto {

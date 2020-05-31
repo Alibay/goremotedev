@@ -8,6 +8,11 @@ export default class UserMapper {
       firstName: userDto.firstName,
       lastName: userDto.lastName,
       password: userDto.password,
+      blocked: false,
+      verified: false,
+      deleted: false,
+      status: 0,
+      verificationCode: null,
     };
   }
 }
