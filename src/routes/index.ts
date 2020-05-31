@@ -20,4 +20,6 @@ _.get ('/verify', userController.verifyUser.bind(userController));
 _.get ('/jobs', jobController.getJobs.bind(jobController));
 _.get ('/job/:id', jobController.getJobs.bind(jobController));
 
+_.get ('/admin/', homeController.adminDashboard.bind(homeController));
+
 export default _;
